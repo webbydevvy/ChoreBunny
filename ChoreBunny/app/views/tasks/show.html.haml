@@ -2,4 +2,6 @@
 %p= @task.description
 %p= @task.company
 
+= link_to "Edit", edit_task_path(@task)
+= link_to "Delete", task_path(@task), method: :delete, data: { confirm: "Delete task?" }
 = link_to "View All", root_path
