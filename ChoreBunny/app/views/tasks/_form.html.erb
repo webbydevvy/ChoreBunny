@@ -1,0 +1,21 @@
+<div class="tasks">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="task">
+                <div class="panel-body">
+                    <%= simple_form_for(@task, html: { class: 'form-group' }) do |f| %>
+                        <%= f.input :title, label: 'Title', input_html: { class: "form-control" } %>
+                        <%= f.label :category %>
+                        <%= f.collection_select :category, Category.all, :id, :name, { prompt: "Please select..." }, { class: "form-control" } %>
+                        <br/>
+                        <%= f.input :description, label: 'Description', input_html: { class: "form-control" }, input_html: { rows: 10 } %>
+                        <%= f.input :company, label: 'Company', input_html: { class: "form-control" } %>
+                        <%= f.input :url, label: 'URL', input_html: { class: "form-control" } %>
+                        <%= f.button :submit, class: "btn btn-success" %>
+                        <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

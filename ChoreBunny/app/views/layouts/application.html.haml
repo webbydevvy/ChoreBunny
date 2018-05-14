@@ -1,21 +1,20 @@
 !!!
 %html
-%head
-  %title Chore Bunny
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  = csrf_meta_tags
-  = csp_meta_tag
+  %head
+    %title Chore Bunny
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+    = csp_meta_tag
 
-  %body
-    %nav.navbar.navbar-default
+    %body
+      %nav.navbar.navbar-default
+        .container
+          = link_to image_tag("chorebunny.png", id: "navbar-logo"), new_task_path
+          .navbar-brand= link_to "ChoreBunny", root_path
+          %ul.nav.navbar-nav
+            - Category.all.each do |category|
+              %li= link_to category.name, tasks_path(category: category.name)
       .container
-        .navbar-brand ChoreBunny
-        %ul.nav.navbar-nav
-          %li= link_to "View All Tasks", root_path
-          - Category.all.each do |category|
-            %li= link_to category.name, tasks_path(category: category.name)
-        = link_to "Add New", new_task_path, class: "navbar-text navbar-right navbar-link"
-    .container
-      .col-md-8.col-md-offset-2
-        = yield
+        .col-md-9
+          = yield

@@ -1,13 +1,13 @@
 #tasks
-  .col-md-6.col-md-offset-3
-    .panel.panel-default
-      .panel-body
-        %h1= @task.title
-        %p= @task.description
-        %p= @task.company
-        %button.btn.btn-default= link_to "Complete Task", @task.url
-
-#links
-  = link_to "Go Back", root_path, class: "btn btn-sm btn-default"
-  = link_to "Edit", edit_task_path(@task), class: "btn btn-sm btn-info"
-  = link_to "Delete", task_path(@task), method: :delete, data: { confirm: "Delete task?" }, class: "btn btn-sm btn-danger"
+    .panel-group
+        .panel.panel-default
+            .task
+                .panel-heading
+                    %h2= @task.title
+                .panel-body
+                    %p= @task.description
+                .panel-footer
+                    %h6= "Posted by " + @task.company + " " + time_ago_in_words(@task.created_at) + " ago"
+                    %button.btn-sm.btn-default= link_to "Register Interest", @task.url
+                    = link_to "Edit", edit_task_path(@task), class: "btn btn-sm btn-info"
+                    = link_to "Delete", task_path(@task), method: :delete, data: { confirm: "Delete task?" }, class: "btn btn-sm btn-danger"

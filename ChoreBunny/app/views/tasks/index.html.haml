@@ -1,5 +1,11 @@
 #tasks
   - @tasks.each do |task|
-    .task
-      %h2= link_to task.title, task
-      %p= task.company
+    .panel-group
+      .panel.panel-default
+        .task
+          .panel-heading
+            %h2= link_to task.title, task
+            .panel-body
+              %p= truncate(task.description, length: 200)
+            .panel-footer
+              %p= " Created " + time_ago_in_words(task.created_at) + " ago"
