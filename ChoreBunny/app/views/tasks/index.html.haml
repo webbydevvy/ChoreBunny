@@ -1,5 +1,5 @@
-- @tasks.each do |task|
-  %h2= link_to task.title, task
-  %p= task.company
-
-  = link_to "Add New", new_task_path
+#tasks
+  - @tasks.each do |task|
+    .task
+      %h2= link_to task.title, task
+      %p= task.company

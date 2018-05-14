@@ -1,7 +1,13 @@
-%h1= @task.title
-%p= @task.description
-%p= @task.company
+#tasks
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-body
+        %h1= @task.title
+        %p= @task.description
+        %p= @task.company
+        %button.btn.btn-default= link_to "Complete Task", @task.url
 
-= link_to "Edit", edit_task_path(@task)
-= link_to "Delete", task_path(@task), method: :delete, data: { confirm: "Delete task?" }
-= link_to "View All", root_path
+#links
+  = link_to "Go Back", root_path, class: "btn btn-sm btn-default"
+  = link_to "Edit", edit_task_path(@task), class: "btn btn-sm btn-info"
+  = link_to "Delete", task_path(@task), method: :delete, data: { confirm: "Delete task?" }, class: "btn btn-sm btn-danger"
